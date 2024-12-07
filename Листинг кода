@@ -1,0 +1,73 @@
+n_v = int(input("Введите количество вершин в графе: "))
+n_e = int(input("Введите количество рёбер в графе: "))
+abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+sl = {}
+
+for i in range(1, n_v + 1):
+    sl[i] = abc[i - 1]
+
+print("Матрица инцидентности:")
+for i in range(n_e):
+    print(" e" + str(i + 1), end="")
+print()
+matr = []
+for i in range(n_v):
+    print(sl[i + 1], end=" ")
+    matr.append(input().split())
+
+edges = []
+for j in range(n_e):
+    verts = [i for i in range(n_v) if matr[i][j] == '1']
+    if len(verts) == 2:
+        u, v = verts
+        w = 1
+        edges.append((w, u + 1, v + 1))
+
+print("Все рёбра графа:")
+for w, u, v in edges:
+    print(f"{sl[u]} - {sl[v]}")
+
+sorted_edges = sorted(edges, key=lambda x: x[0])
+# соединенные вершины
+connected = set()
+# группы соединенных вершин
+groups = {}
+# рёбра минимального остова
+mst = []
+
+for r in sorted_edges:
+    if r[1] not in connected or r[2] not in connected:
+        if r[1] not in connected and r[2] not in connected:
+            groups[r[1]] = [r[1], r[2]]
+            groups[r[2]] = groups[r[1]]
+        else:
+            if not groups.get(r[1]):
+                groups[r[2]].append(r[1])
+                groups[r[1]] = groups[r[2]]
+            else:
+                groups[r[1]].append(r[2])
+                groups[r[2]] = groups[r[1]]
+
+        mst.append(r)
+        connected.add(r[1])
+        connected.add(r[2])
+# второй раз проезжаем
+for r in sorted_edges:
+    if r[2] not in groups[r[1]]:
+        mst.append(r)
+        gr1 = groups[r[1]]
+        groups[r[1]] += groups[r[2]]
+        groups[r[2]] += gr1
+
+# удаленные рёбра
+all_edges_set = set((u, v) for w, u, v in sorted_edges)
+mst_edges_set = set((u, v) for w, u, v in mst)
+removed_edges = all_edges_set - mst_edges_set
+
+print("Удалённые рёбра:")
+for u, v in removed_edges:
+    print(f"{sl[u]} - {sl[v]}")
+
+print("Рёбра минимального остова:")
+for w, u, v in mst:
+    print(f"{sl[u]} - {sl[v]}")
