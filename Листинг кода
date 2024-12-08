@@ -15,7 +15,7 @@ for i in range(1, n_v + 1):
     sl[i] = abc[i - 1]
 
 # Чтение матрицы инцидентности из файла
-matrix_file = 'C:\\Users\\ASUS\\Desktop\\matrix.txt'
+matrix_file = input("Введите путь к файлу: ")
 matr = read_matrix_from_file(matrix_file)
 
 # Выводим матрицу инцидентности для проверки
