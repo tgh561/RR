@@ -276,5 +276,5 @@
 
 * Были изучены новые термины и понятия,
 * Сотавлен алгоритм по условию задачи из [индивидуального варианта №24](https://docs.google.com/spreadsheets/d/1HTp6ehfjZ-J7uujVQCQodTtJ-tUJQM5IDe3kxOtpCl8/edit?gid=321859418#gid=321859418)
-* [Алгоритм](https://github.com/tgh561/RR/blob/main/%D0%9B%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%B3%20%D0%BA%D0%BE%D0%B4%D0%B0) был перенесён на один из языков программирования (Python 3.4)
+* [Алгоритм](https://github.com/tgh561/RR/blob/main/%D0%9B%D0%B8%D1%81%D1%82%D0%B8%D0%BD%D0%B3%20%D0%BA%D0%BE%D0%B4%D0%B0) был перенесён на один из языков программирования (Python 3.12)
 * Был составлен отчет в виде readme-файла на удалённом репозитории
